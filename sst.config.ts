@@ -3,7 +3,7 @@
 export default $config({
   app(input) {
     return {
-      name: "monorepo-template",
+      name: "aot-sst",
       removal: input?.stage === "production" ? "retain" : "remove",
       home: "aws",
     };
@@ -11,9 +11,10 @@ export default $config({
   async run() {
     await import("./infra/storage");
     const api = await import("./infra/api");
+    const web = await import("./infra/frontend");
 
     return {
-      api: api.myApi.url,
+      api: api.api.url,
     };
   },
 });
