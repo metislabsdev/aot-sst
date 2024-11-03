@@ -1,22 +1,19 @@
-import {
-  RouterProvider,
-} from "react-router-dom";
-import { router } from "./router";
-import Header from "./components/header";
-import { ModalProvider } from "./context/modalContext";
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
+import { ModalProvider } from './context/modalContext';
+import NavListMenu from './components/header/nav';
 
 function App() {
-
   return (
     <>
       <div>
-      <ModalProvider>
-        <Header />
-        <RouterProvider router={router} />
+        <ModalProvider>
+          <NavListMenu />
+          <RouterProvider router={router} />
         </ModalProvider>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
