@@ -10,6 +10,7 @@ import {
 import { Bars3Icon, PlusCircleIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useModal } from '../../hooks/useModal';
 import AddAssetForm from '../add-asset/form';
+import AddWalletForm from '../add-wallet/form';
 
 const user = {
   name: 'Tom Cook',
@@ -31,11 +32,16 @@ const userNavigation = [
 export default function Header() {
   const { openModal } = useModal();
 
-  const handleOpenModal = () => {
-    openModal(<AddAssetForm />, 'Add Asset');
+  type ModalElement = JSX.Element;
+
+  const handleOpenModal = (element: ModalElement, label: string): void => {
+    openModal(element, label);
   };
 
-  const addButonNavigation = [{ name: 'Add Asset', buttonAction: handleOpenModal }];
+  const addButonNavigation = [
+    { name: 'Add Asset', buttonAction: () => handleOpenModal(<AddAssetForm />, 'Add Asset') },
+    { name: 'Add Wallet', buttonAction: () => handleOpenModal(<AddWalletForm />, 'Add Wallet') },
+  ];
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
@@ -91,8 +97,8 @@ export default function Header() {
                     transition
                     className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                   >
-                    {addButonNavigation.map((item) => (
-                      <MenuButton key={item.name}>
+                    {addButonNavigation.map((item, index) => (
+                      <MenuButton key={index}>
                         <a
                           onClick={item.buttonAction}
                           className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"

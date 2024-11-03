@@ -9,6 +9,9 @@ module.exports = withMT({
     '../../node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['Open Sans', 'sans-serif'],
+    },
     extend: {},
   },
   plugins: [require('@tailwindcss/forms')],

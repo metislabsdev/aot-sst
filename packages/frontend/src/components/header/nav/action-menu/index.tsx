@@ -1,6 +1,7 @@
 import { Button, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
 import { useModal } from '../../../../hooks/useModal';
 import AddAssetForm from '../../../add-asset/form';
+import AddWalletForm from '../../../add-wallet/form';
 
 type AddButtonNavigationItem = {
   name: string;
@@ -10,11 +11,14 @@ type AddButtonNavigationItem = {
 export function ActionMenu() {
   const { openModal } = useModal();
 
-  const handleOpenModal = () => {
-    openModal(<AddAssetForm />, 'Add Asset');
+  const handleOpenModal = (element: React.ReactNode, label: string): void => {
+    openModal(element, label);
   };
 
-  const addButonNavigation = [{ name: 'Add Asset', buttonAction: handleOpenModal }];
+  const addButonNavigation = [
+    { name: 'Add Asset', buttonAction: () => handleOpenModal(<AddAssetForm />, 'Add Asset') },
+    { name: 'Add Wallet', buttonAction: () => handleOpenModal(<AddWalletForm />, 'Add Wallet') },
+  ];
   return (
     <>
       <Menu>
