@@ -4,6 +4,7 @@
   "dependencies": {
     "@aot-sst/core": "*",
     "@aws-sdk/client-dynamodb": "^3.716.0",
+    "axios": "^1.7.9",
     "axios-rate-limit": "^1.4.0",
     "sst": "*"
   },
