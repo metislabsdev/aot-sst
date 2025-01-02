@@ -1,5 +1,5 @@
-import { DATA_SOURCES } from "./connectors/dynamo/models/data-sources";
-import { INVESTMENT_DATA_TYPES } from "./connectors/dynamo/models/investments.model";
+import { DATA_SOURCES } from "../models/data-sources";
+import { INVESTMENT_DATA_TYPES } from "../models/investments.model";
 
 export interface DataPoint {
   name: string; // enum name for the data point
