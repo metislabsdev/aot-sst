@@ -1,5 +1,3 @@
-import { api } from "./api";
-
 export const web = new sst.aws.StaticSite("AotStaticSite", {
   path: "packages/frontend",
   build: {
@@ -7,6 +5,6 @@ export const web = new sst.aws.StaticSite("AotStaticSite", {
     command: "npm run build",
   },
   environment: {
-    VITE_API_URL: api.url,
+    // VITE_API_URL: api.url,
   },
 });

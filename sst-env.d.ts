@@ -15,8 +15,17 @@ declare module "sst" {
       "name": string
       "type": "sst.aws.Bucket"
     }
+    "AotQueue": {
+      "type": "sst.aws.Queue"
+      "url": string
+    }
     "AotStaticSite": {
       "type": "sst.aws.StaticSite"
+      "url": string
+    }
+    "AotWorker": {
+      "name": string
+      "type": "sst.aws.Function"
       "url": string
     }
   }
