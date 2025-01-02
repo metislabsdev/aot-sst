@@ -10,11 +10,13 @@ export default $config({
   },
   async run() {
     await import("./infra/storage");
+    await import("./infra/worker");
     const api = await import("./infra/api");
     const web = await import("./infra/frontend");
-
+    const queue = await import("./infra/queue");
+    queue.AotQueue.subscribe("./src/worker.handler");
     return {
-      api: api.api.url,
+      api: api.AotApi.url,
     };
   },
 });

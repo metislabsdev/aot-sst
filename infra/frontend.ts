@@ -1,4 +1,4 @@
-import { api } from "./api";
+import { AotApi } from "./api";
 
 export const web = new sst.aws.StaticSite("AotStaticSite", {
   path: "packages/frontend",
@@ -7,6 +7,6 @@ export const web = new sst.aws.StaticSite("AotStaticSite", {
     command: "npm run build",
   },
   environment: {
-    VITE_API_URL: api.url,
+    VITE_API_URL: AotApi.url,
   },
 });

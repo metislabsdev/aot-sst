@@ -1,7 +1,7 @@
-import { bucket } from "./storage";
+import worker from "./worker";
 
-export const api = new sst.aws.Function("AotApi", {
+export const AotApi = new sst.aws.Function("AotApi", {
   url: true,
-  link: [bucket],
-  handler: "packages/functions/src/api.handler"
+  handler: "packages/functions/src/api.handler",
+  link: [worker],
 });
