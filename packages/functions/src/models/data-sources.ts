@@ -1,0 +1,9 @@
+export enum DATA_SOURCES {
+  ALPACA = "ALPACA",
+  COIN_MARKET_CAP = "COIN_MARKET_CAP",
+  HIRO = "HIRO",
+}
+
+export enum SOCIAL_MEDIA_DATA_SOURCES {
+  X = "X",
+}
