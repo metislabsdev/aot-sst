@@ -1,10 +1,10 @@
 export enum INVESTMENT_DATA_TYPES {
-  MARKET = "MARKET", // General overview for a market (Crypto, Stocks, Real estate, etc)
-  ASSET = "ASSET", // General overview for an asset (TESLA, BTC, etc  )
-  MACRO = "MACRO", // General overview for a macro (Macro Financial Market, STOCKS, CRYPTO, etc )
+  ASSET = "ASSET", // General overview for an asset(Property, stock, crypto, etc) (TESLA, BTC, etc  )
+  MACRO = "MACRO", // General overview for a macro financial data (GDP, Unemployment, etc)
 }
 
-export enum INVESTMENT_MARKETS {
-  STOCK = "STOCK",
+export enum ASSET_CLASSES {
   CRYPTO = "CRYPTO",
+  STOCK = "STOCK",
+  REAL_ESTATE = "REAL_ESTATE",
 }
