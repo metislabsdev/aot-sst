@@ -5,6 +5,7 @@
     "@aot-sst/core": "*",
     "@aws-sdk/client-dynamodb": "^3.716.0",
     "axios": "^1.7.9",
+    "@aws-sdk/lib-dynamodb": "^3.721.0",
     "axios-rate-limit": "^1.4.0",
     "sst": "*"
   },
