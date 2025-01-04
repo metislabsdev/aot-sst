@@ -1,15 +1,30 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import axiosRateLimit from "axios-rate-limit";
 
+/**
+ * Service for making HTTP requests with rate limiting
+ */
 export class HttpService {
   private readonly client: AxiosInstance;
-  constructor() {
+
+  /**
+   * Creates an instance of HttpService with rate-limited Axios client
+   * @param httpClient - Axios instance for making HTTP requests
+   */
+  constructor(private readonly httpClient: AxiosInstance) {
     this.client = axiosRateLimit(axios.create(), {
-      maxRequests: 10, // Max 10 requests
-      perMilliseconds: 1000, // per 1 second
-      maxRPS: 5, // Max 2 requests per second
+      maxRequests: 10,
+      perMilliseconds: 1000,
+      maxRPS: 5,
     });
   }
+
+  /**
+   * Performs a GET request and returns the response data
+   * @param url - The URL to fetch from
+   * @returns Promise containing the response data
+   * @throws Error if the request fails
+   */
   public async get<T>(url: string): Promise<T> {
     try {
       const { data } = await this.client.get(url);
@@ -20,6 +35,17 @@ export class HttpService {
     }
   }
 
+  /**
+   * Fetches all paginated results from an endpoint
+   * @param url - The base URL to fetch from
+   * @param limit - Number of items per page (default: 10)
+   * @param headers - Additional headers to include in the request
+   * @param params - Additional query parameters
+   * @param API_KEY - API key for authentication
+   * @param source - Optional source identifier
+   * @returns Promise containing array of all results
+   * @throws Error if the request fails
+   */
   public async fetchAllResults<T>(
     url: string,
     limit: number = 10,
