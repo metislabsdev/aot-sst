@@ -1,3 +1,8 @@
+/**
+ * Converts a timestamp to ISO 8601 format
+ * @param timestamp - Unix timestamp in seconds or milliseconds
+ * @returns ISO 8601 formatted date string
+ */
 export const convertTimestampToISO = (timestamp: number) => {
   // Handle both millisecond and second timestamps
   const normalizedTimestamp =
@@ -5,6 +10,12 @@ export const convertTimestampToISO = (timestamp: number) => {
   return new Date(normalizedTimestamp).toISOString();
 };
 
+/**
+ * Adds specified minutes to a timestamp and returns ISO 8601 format
+ * @param timestamp - Unix timestamp in seconds or milliseconds
+ * @param minutes - Number of minutes to add
+ * @returns ISO 8601 formatted date string with added minutes
+ */
 export const addMinutesToTimestamp = (timestamp: number, minutes: number) => {
   // Normalize timestamp to milliseconds
   const normalizedTimestamp =
