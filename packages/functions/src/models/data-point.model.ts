@@ -7,16 +7,17 @@ export interface DataPoint {
   name: DataPointName; // enum name for the data point
   value: number; // value of API endpoint returned
   timestamp: number; // unix timestamp
-  frequency: Frequency;
+  frequency: FREQUENCY;
   metricType: [INVESTMENT_DATA_TYPES]; // asset, macro
   assetClass: [ASSET_CLASSES]; // Stock, CRYPTO, REAL_ESTATE
   source: DATA_SOURCES; // 3rd party API provider, webhook, etc
   assetId: string; // id of the asset if it is an asset
+  ttl: number; // unix timestamp for when the data point expires
 }
 
 type DataPointName = CRYPTO_MARKET_DATA_POINTS | ASSET_DATA_POINTS;
 
-enum Frequency {
+export enum FREQUENCY {
   HOURLY = "HOURLY",
   DAILY = "DAILY",
   WEEKLY = "WEEKLY",
