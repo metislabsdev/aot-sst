@@ -6,6 +6,10 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
+    "AOT-DataPoints": {
+      "name": string
+      "type": "sst.aws.Dynamo"
+    }
     "AotApi": {
       "name": string
       "type": "sst.aws.Function"
@@ -27,6 +31,10 @@ declare module "sst" {
       "name": string
       "type": "sst.aws.Function"
       "url": string
+    }
+    "CoinMarketCapApiKey": {
+      "type": "sst.sst.Secret"
+      "value": string
     }
   }
 }

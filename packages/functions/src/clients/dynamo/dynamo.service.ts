@@ -33,8 +33,10 @@ export class DynamoDBService {
   private docClient: DynamoDBDocumentClient;
   private tableName: string;
 
-  protected constructor(config: DynamoDBServiceConfig) {
-    const client = new DynamoDBClient(config.clientConfig || {});
+  protected constructor(tableName: string) {
+    const client = new DynamoDBClient();
+    this.docClient = DynamoDBDocumentClient.from(client);
+    this.tableName = tableName;
 
     this.docClient = DynamoDBDocumentClient.from(client, {
       marshallOptions: {
@@ -42,15 +44,6 @@ export class DynamoDBService {
         convertEmptyValues: true,
       },
     });
-
-    this.tableName = config.tableName;
-  }
-
-  public static getInstance(config: DynamoDBServiceConfig): DynamoDBService {
-    if (!DynamoDBService.instance) {
-      DynamoDBService.instance = new DynamoDBService(config);
-    }
-    return DynamoDBService.instance;
   }
 
   /**
