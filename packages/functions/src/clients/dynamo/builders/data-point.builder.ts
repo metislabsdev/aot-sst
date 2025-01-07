@@ -59,59 +59,6 @@ export class DataPointBuilder {
     this.dataPoint.ttl = ttl;
   }
 
-  //   // Example builder for CoinMarketCap price data
-  //   public fromCoinMarketCapPrice(
-  //     response: any,
-  //     assetId: string
-  //   ): DataPointBuilder {
-  //     this.dataPoint.name = ASSET_DATA_POINTS.PRICE;
-  //     this.dataPoint.value = response.data[assetId].quote.USD.price;
-  //     this.dataPoint.timestamp = Math.floor(
-  //       new Date(response.data[assetId].last_updated).getTime() / 1000
-  //     );
-  //     this.dataPoint.frequency = FREQUENCY.HOURLY;
-  //     this.dataPoint.metricType = [INVESTMENT_DATA_TYPES.ASSET];
-  //     this.dataPoint.assetClass = [ASSET_CLASSES.CRYPTO];
-  //     this.dataPoint.source = DATA_SOURCES.COIN_MARKET_CAP;
-  //     this.dataPoint.assetId = assetId;
-
-  //     this.buildKeys();
-  //     return this;
-  //   }
-
-  //   // Example builder for CoinMarketCap Fear & Greed Index
-  //   public fromCoinMarketCapFearGreedIndex(response: any): DataPointBuilder {
-  //     this.dataPoint.name = CRYPTO_MARKET_DATA_POINTS.FEAR_AND_GREED_INDEX;
-  //     this.dataPoint.value = response.data.fear_and_greed_value;
-  //     this.dataPoint.timestamp = Math.floor(
-  //       new Date(response.data.timestamp).getTime() / 1000
-  //     );
-  //     this.dataPoint.frequency = FREQUENCY.DAILY;
-  //     this.dataPoint.metricType = [INVESTMENT_DATA_TYPES.MACRO];
-  //     this.dataPoint.assetClass = [ASSET_CLASSES.CRYPTO];
-  //     this.dataPoint.source = DATA_SOURCES.COIN_MARKET_CAP;
-
-  //     this.buildKeys();
-  //     return this;
-  //   }
-
-  //   // Example builder for Alpaca stock price
-  //   public fromAlpacaPrice(response: any, assetId: string): DataPointBuilder {
-  //     this.dataPoint.name = ASSET_DATA_POINTS.PRICE;
-  //     this.dataPoint.value = response.trade.price;
-  //     this.dataPoint.timestamp = Math.floor(
-  //       new Date(response.trade.timestamp).getTime() / 1000
-  //     );
-  //     this.dataPoint.frequency = FREQUENCY.HOURLY;
-  //     this.dataPoint.metricType = [INVESTMENT_DATA_TYPES.ASSET];
-  //     this.dataPoint.assetClass = [ASSET_CLASSES.STOCK];
-  //     this.dataPoint.source = DATA_SOURCES.ALPACA;
-  //     this.dataPoint.assetId = assetId;
-
-  //     this.buildKeys();
-  //     return this;
-  //   }
-
   public build(): DataPoint & DynamoKeys {
     return this.dataPoint;
   }

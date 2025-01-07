@@ -10,14 +10,7 @@ import { CRYPTO_MARKET_DATA_POINTS } from "../../../models/crypto.model";
 import { convertISOToTimestamp } from "../../utils/date";
 import { DataPointBuilder } from "../../../clients/dynamo/builders/data-point.builder";
 import { DataPointDynamoService } from "../../../clients/dynamo/services/data-point.service";
-
-interface FearGreedResponse {
-  data: {
-    value: number;
-    value_classification: string;
-    update_time: string;
-  };
-}
+import { FearGreedResponse } from "./coin-market-cap.interface";
 
 export class CoinMarketCap extends HttpService {
   private readonly baseUrl = "https://pro-api.coinmarketcap.com";
