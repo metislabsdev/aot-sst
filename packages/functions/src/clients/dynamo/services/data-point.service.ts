@@ -1,25 +1,22 @@
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
   PaginatedResponse,
   PaginationParams,
 } from "../../../lib/types/common.types";
 import { DynamoRecord } from "../builders/data-point.builder";
 import { DynamoDBService, DynamoDBServiceConfig } from "../dynamo.service";
+import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
+import { Resource } from "sst/resource";
 
 export class DataPointDynamoService extends DynamoDBService {
-  private constructor(config: DynamoDBServiceConfig) {
-    super(config);
-  }
-
-  public static getInstance(
-    config: DynamoDBServiceConfig
-  ): DataPointDynamoService {
-    return super.getInstance(config) as DataPointDynamoService;
+  constructor() {
+    super(Resource["AOT-DataPoints"].name);
   }
 
   /**
    * Save a single data point
    */
-  async saveDataPoint(record: DynamoRecord): Promise<void> {
+  public async saveDataPoint(record: DynamoRecord): Promise<void> {
     await this.putItem(record);
   }
 

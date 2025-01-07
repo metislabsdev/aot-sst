@@ -12,7 +12,7 @@ export interface DataPoint {
   assetClass: [ASSET_CLASSES]; // Stock, CRYPTO, REAL_ESTATE
   source: DATA_SOURCES; // 3rd party API provider, webhook, etc
   assetId: string; // id of the asset if it is an asset
-  ttl: number; // unix timestamp for when the data point expires
+  ttl?: number; // unix timestamp for when the data point expires
 }
 
 type DataPointName = CRYPTO_MARKET_DATA_POINTS | ASSET_DATA_POINTS;

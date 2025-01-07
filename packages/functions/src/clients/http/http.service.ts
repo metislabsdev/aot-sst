@@ -9,9 +9,13 @@ export class HttpService {
 
   /**
    * Creates an instance of HttpService with rate-limited Axios client
-   * @param httpClient - Axios instance for making HTTP requests
+   * @param baseUrl - Base URL for API requests
+   * @param method - HTTP method to be used
+   * @param headers - HTTP headers to include in requests
+   * @param params - Query parameters to include in requests
+   * @param apiKey - API key for authentication
    */
-  constructor(private readonly httpClient: AxiosInstance) {
+  constructor() {
     this.client = axiosRateLimit(axios.create(), {
       maxRequests: 10,
       perMilliseconds: 1000,
@@ -25,9 +29,9 @@ export class HttpService {
    * @returns Promise containing the response data
    * @throws Error if the request fails
    */
-  public async get<T>(url: string): Promise<T> {
+  public async get<T>(url: string, config?: Record<string, any>): Promise<T> {
     try {
-      const { data } = await this.client.get(url);
+      const { data } = await this.client.get(url, config);
       return data;
     } catch (error) {
       console.error("Error fetching data:", { error });

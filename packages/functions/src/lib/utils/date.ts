@@ -27,3 +27,17 @@ export const addMinutesToTimestamp = (timestamp: number, minutes: number) => {
   // Return as ISO string
   return new Date(newTimestamp).toISOString();
 };
+
+/**
+ * Converts an ISO 8601 date string to Unix timestamp
+ * @param isoString - ISO 8601 formatted date string
+ * @param inSeconds - Whether to return the timestamp in seconds (true) or milliseconds (false)
+ * @returns Unix timestamp in seconds or milliseconds
+ */
+export const convertISOToTimestamp = (
+  isoString: string,
+  inSeconds: boolean = true
+): number => {
+  const timestamp = new Date(isoString).getTime();
+  return inSeconds ? Math.floor(timestamp / 1000) : timestamp;
+};
