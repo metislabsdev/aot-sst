@@ -43,8 +43,8 @@ export class CoinMarketCap extends HttpService {
 
     const dataPoint = DataPointBuilder.toDynamoRecord({
       name: CRYPTO_MARKET_DATA_POINTS.FEAR_AND_GREED_INDEX,
-      metricType: [INVESTMENT_DATA_TYPES.MACRO],
-      assetClass: [ASSET_CLASSES.CRYPTO],
+      metricType: [INVESTMENT_DATA_TYPES.MACRO, INVESTMENT_DATA_TYPES.ASSET],
+      assetClass: ASSET_CLASSES.CRYPTO,
       frequency: FREQUENCY.DAILY,
       source: DATA_SOURCES.COIN_MARKET_CAP,
       value: response.data.value,

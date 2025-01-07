@@ -8,8 +8,8 @@ export interface DataPoint {
   value: number; // value of API endpoint returned
   timestamp: number; // unix timestamp
   frequency: FREQUENCY;
-  metricType: [INVESTMENT_DATA_TYPES]; // asset, macro
-  assetClass: [ASSET_CLASSES]; // Stock, CRYPTO, REAL_ESTATE
+  metricType: INVESTMENT_DATA_TYPES[]; // asset, macro
+  assetClass: ASSET_CLASSES; // Stock, CRYPTO, REAL_ESTATE
   source: DATA_SOURCES; // 3rd party API provider, webhook, etc
   assetId: string; // id of the asset if it is an asset
   ttl?: number; // unix timestamp for when the data point expires
