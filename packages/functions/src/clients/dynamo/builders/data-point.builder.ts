@@ -41,8 +41,8 @@ export class DataPointBuilder {
       : `ASSET#${this.dataPoint.assetClass[0]}`;
 
     this.dataPoint.SK = isMacro
-      ? `${this.dataPoint.name}#${timestamp}`
-      : `${this.dataPoint.assetId}#${timestamp}`;
+      ? `${timestamp}#${this.dataPoint.name}`
+      : `${timestamp}#${this.dataPoint.assetId}`;
 
     // Build GSI1
     this.dataPoint.GSI1PK = isMacro
