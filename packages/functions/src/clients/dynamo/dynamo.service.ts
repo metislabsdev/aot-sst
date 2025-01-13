@@ -84,6 +84,16 @@ export class DynamoDBService {
   }
 
   /**
+   * Helper method to remove DynamoDB specific keys from records
+   */
+  private removeDynamoKeys<T>(items: Record<string, any>[]): T[] {
+    return items.map((item) => {
+      const { PK, SK, GSI1PK, GSI1SK, GSI2PK, GSI2SK, ...rest } = item;
+      return rest as T;
+    });
+  }
+
+  /**
    * Query items with pagination
    */
   protected async query<T>(
@@ -103,9 +113,10 @@ export class DynamoDBService {
       };
 
       const response = await this.docClient.send(new QueryCommand(queryParams));
+      const cleanedItems = this.removeDynamoKeys<T>(response.Items || []);
 
       return {
-        items: (response.Items || []) as T[],
+        items: cleanedItems,
         nextToken: response.LastEvaluatedKey
           ? Buffer.from(JSON.stringify(response.LastEvaluatedKey)).toString(
               "base64"

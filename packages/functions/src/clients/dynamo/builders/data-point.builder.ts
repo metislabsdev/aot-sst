@@ -9,7 +9,7 @@ import { DATA_SOURCES } from "../../../models/data-sources";
 
 interface DynamoKeys {
   PK: string; // "MACRO" | "ASSET#{ASSET_CLASS}"
-  SK: string; // "#{NAME}#${TIMESTAMP}"
+  SK: string; // "${TIMESTAMP}#${DATA_POINT_NAME}"
   GSI1PK: string; // "#{ASSET_CLASS}#${NAME}" | "MACRO#${INDICATOR_NAME}"
   GSI1SK: string; // "#{TIMESTAMP}"
   GSI2PK: string; // "#{FREQUENCY}#${METRIC_TYPE}"
@@ -41,8 +41,8 @@ export class DataPointBuilder {
       : `ASSET#${this.dataPoint.assetClass[0]}`;
 
     this.dataPoint.SK = isMacro
-      ? `${this.dataPoint.name}#${timestamp}`
-      : `${this.dataPoint.assetId}#${timestamp}`;
+      ? `${timestamp}#${this.dataPoint.name}`
+      : `${timestamp}#${this.dataPoint.assetId}`;
 
     // Build GSI1
     this.dataPoint.GSI1PK = isMacro

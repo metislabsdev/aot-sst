@@ -5,7 +5,6 @@ import {
 } from "../../../lib/types/common.types";
 import { DynamoRecord } from "../builders/data-point.builder";
 import { DynamoDBService, DynamoDBServiceConfig } from "../dynamo.service";
-import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 import { Resource } from "sst/resource";
 
 export class DataPointDynamoService extends DynamoDBService {
@@ -46,6 +45,17 @@ export class DataPointDynamoService extends DynamoDBService {
       paginationParams
     );
   }
+  /**
+   * Query macro data points
+   */
+  async getMacroDataPoints(): Promise<PaginatedResponse<DynamoRecord>> {
+    return this.query({
+      KeyConditionExpression: "PK = :pk",
+      ExpressionAttributeValues: {
+        ":pk": "MACRO",
+      },
+    });
+  }
 
   /**
    * Query data points by frequency
@@ -57,7 +67,6 @@ export class DataPointDynamoService extends DynamoDBService {
   ): Promise<PaginatedResponse<DynamoRecord>> {
     return this.query(
       {
-        IndexName: "GSI2",
         KeyConditionExpression: "GSI2PK = :pk",
         ExpressionAttributeValues: {
           ":pk": `${frequency}#${metricType}`,
