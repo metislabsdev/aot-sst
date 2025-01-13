@@ -11,8 +11,7 @@ declare module "sst" {
       "type": "sst.aws.Dynamo"
     }
     "AotApi": {
-      "name": string
-      "type": "sst.aws.Function"
+      "type": "sst.aws.ApiGatewayV2"
       "url": string
     }
     "AotBucket": {

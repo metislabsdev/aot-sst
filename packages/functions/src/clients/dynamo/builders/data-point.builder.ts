@@ -9,7 +9,7 @@ import { DATA_SOURCES } from "../../../models/data-sources";
 
 interface DynamoKeys {
   PK: string; // "MACRO" | "ASSET#{ASSET_CLASS}"
-  SK: string; // "#{NAME}#${TIMESTAMP}"
+  SK: string; // "${TIMESTAMP}#${DATA_POINT_NAME}"
   GSI1PK: string; // "#{ASSET_CLASS}#${NAME}" | "MACRO#${INDICATOR_NAME}"
   GSI1SK: string; // "#{TIMESTAMP}"
   GSI2PK: string; // "#{FREQUENCY}#${METRIC_TYPE}"

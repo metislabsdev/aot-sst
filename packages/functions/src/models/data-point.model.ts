@@ -15,7 +15,7 @@ export interface DataPoint {
   ttl?: number; // unix timestamp for when the data point expires
 }
 
-type DataPointName = CRYPTO_MARKET_DATA_POINTS | ASSET_DATA_POINTS;
+export type DataPointName = CRYPTO_MARKET_DATA_POINTS | ASSET_DATA_POINTS;
 
 export enum FREQUENCY {
   HOURLY = "HOURLY",
